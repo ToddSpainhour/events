@@ -76,7 +76,7 @@ const pies = [
             isAvaliable: true,
             imageUrl: "https://www.phillymag.com/wp-content/uploads/sites/3/2014/12/apple-pie.jpg",
             drinkPairing: "soda", 
-            instructor: "Todd"
+            instructor: "Zoe"
         }
 
 ]
@@ -90,20 +90,20 @@ const printToDom = (divId, textToPrint) => {
 
 
 
-const pieBuilder = () => {
+const pieBuilder = (monkeyButtArray) => {
     let domString = "";
-    for(i = 0; i < pies.length; i++) {
+    for(i = 0; i < monkeyButtArray.length; i++) {
         domString += `<div class="individualPie">`;
-        domString += `<h6 class="type"> ${pies[i].name}</h6>`;
-        domString += `<p class="price">${pies[i].price}</p>`;
-        domString += `<p class="isWarm"> ${pies[i].isWarm}<p/>`;
-        domString += `<p class="isOrganic"> ${pies[i].isOrganic}</p>`;
-        domString += `<p class="crust"> ${pies[i].crust}</p>`;
-        domString += `<p class="iceCream">  ${pies[i].iceCream}</p>`;
-        domString += `<p class="isAvaliable"> ${pies[i].isAvaliable}</p>`;
-        domString += `<img src=${pies[i].imageUrl} class="petImage">`;
-        domString += `<p class="drinkPairing"> ${pies[i].drinkPairing}</p>`;
-        domString += `<p class="instructor"> ${pies[i].instructor}</p>`;
+        domString += `<h6 class="type"> ${monkeyButtArray[i].name}</h6>`;
+        domString += `<p class="price">${monkeyButtArray[i].price}</p>`;
+        domString += `<p class="isWarm"> ${monkeyButtArray[i].isWarm}<p/>`;
+        domString += `<p class="isOrganic"> ${monkeyButtArray[i].isOrganic}</p>`;
+        domString += `<p class="crust"> ${monkeyButtArray[i].crust}</p>`;
+        domString += `<p class="iceCream">  ${monkeyButtArray[i].iceCream}</p>`;
+        domString += `<p class="isAvaliable"> ${monkeyButtArray[i].isAvaliable}</p>`;
+        domString += `<img src=${monkeyButtArray[i].imageUrl} class="petImage">`;
+        domString += `<p class="drinkPairing"> ${monkeyButtArray[i].drinkPairing}</p>`;
+        domString += `<p class="instructor"> ${monkeyButtArray[i].instructor}</p>`;
         domString += `</div>`;
     } 
     printToDom("printToThisArea", domString)
@@ -111,4 +111,77 @@ const pieBuilder = () => {
 
 };
 
-pieBuilder()
+/*
+zoesPies = () => {
+   console.log("inside zoesPies");
+   const myPies = []
+   for(i = 0; i < pies.length; i++) {
+    if( pies[i].instructor === "Zoe"){
+        myPies.push(pies[i]);
+    } 
+    }
+    pieBuilder(myPies, pieBuilder(pies))
+}
+
+marysPies = () => {
+    console.log("inside marysPies");
+    const myPies = []
+    for(i = 0; i < pies.length; i++) {
+     if( pies[i].instructor === "Mary"){
+         myPies.push(pies[i]);
+     } 
+     }
+     pieBuilder(myPies, pieBuilder(pies))
+ }
+
+ lukesPies = () => {
+    console.log("inside lukesPies");
+    const myPies = []
+    for(i = 0; i < pies.length; i++) {
+     if( pies[i].instructor === "Luke"){
+         myPies.push(pies[i]);
+     } 
+     }
+     pieBuilder(myPies, pieBuilder(pies))
+ }
+
+
+ marysPies()
+*/
+
+
+const findMyPies = (e) => {
+    const buttonId = e.target.id
+    if (buttonId === "All"){
+        pieBuilder(pies);
+    } else {
+    const myPies = []
+    for(i = 0; i < pies.length; i++) {
+     if( pies[i].instructor === buttonId){
+         myPies.push(pies[i]);
+     } 
+     }
+     pieBuilder(myPies, pieBuilder(pies))
+}
+}
+
+
+const events = () => {
+    document.getElementById('Zoe').addEventListener('click', findMyPies);
+    document.getElementById('Mary').addEventListener('click', findMyPies);
+    document.getElementById('Luke').addEventListener('click', findMyPies);
+    document.getElementById('Todd').addEventListener('click', findMyPies);
+    document.getElementById('All').addEventListener('click', findMyPies);
+    
+    document.getElementById('buttonId').addEventListener('click', findMyPies);
+}
+
+const init = () =>{
+pieBuilder(pies)
+events()
+};
+
+init()
+
+
+
