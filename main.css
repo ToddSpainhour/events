@@ -1,3 +1,61 @@
 body {
     background-color: lightsteelblue;
 }
+
+img {
+    width: 100%;
+    height: 30%;
+    margin: auto;
+}
+
+h6 {
+    background-color: olive;
+}
+
+
+
+#printToThisArea {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.individualPie {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: snow;
+    width: 30%;
+    margin: 1%;
+    border-radius: 15px;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+
+.type {
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    padding: 25px;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/*
+.drinkPairing {
+    text-align: center;
+}*/
